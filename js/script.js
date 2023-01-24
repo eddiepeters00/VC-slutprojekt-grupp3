@@ -33,12 +33,6 @@ if(isNew){
 } 
 
 
-// Generate a random id and save in the database 
-var id = push(ref(db, 'User'),  {
-    test:456
-});
-
-
 // här börjar kod som inte är firebase-igt
 
 // input-message som sparas i databas
