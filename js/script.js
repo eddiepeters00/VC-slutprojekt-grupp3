@@ -21,6 +21,7 @@ const db = getDatabase(app);
 
 console.log(db);
 
+let cardColor;
 
 // input-message som sparas i databas
 const usernameInput = document.querySelector('#username')
@@ -28,13 +29,18 @@ const messageBox = document.querySelector('#message-input');
 const messageBtn = document.querySelector('#message-btn');
 messageBtn.addEventListener('click', createMessage);
 
+const colorPicker = document.querySelector("#color-picker");
+colorPicker.addEventListener("click", pickColor);
 
 function createMessage(event) {
     event.preventDefault();
 
-
     const username = usernameInput.value;
     const userMessage = messageBox.value;
+
+
+    //Pushar message till databasen
+    push(ref(db, "/"), {
 
     //if-sats för att user måste ange ett username och ett message
     if(username == "" && userMessage == ""){
@@ -52,8 +58,10 @@ function createMessage(event) {
     else {
    //Pushar message till databasen
     push( ref(db , "/") , {
+
         name: username,
-        message: userMessage
+        message: userMessage,
+        color: cardColor
     })
 
     console.log(userMessage)
@@ -64,15 +72,15 @@ function createMessage(event) {
 
 // Change color of input/textarea
 
-const colorPicker = document.querySelector("#color-picker");
-
-function pickColor(event) {
-    let cardColor= event.target.id;
-    console.log(cardColor)
-    messageBox.style.backgroundColor = cardColor;
+function pickColor() {
+    const colorChildren = colorPicker.children;
+    for (let i = 0; i < colorChildren.length; i++) {
+        colorChildren[i].addEventListener("click", function () {
+            cardColor = this.id;
+            messageBox.style.backgroundColor = cardColor;
+        });
+    }
 }
-
-colorPicker.addEventListener("click",pickColor);
 
 // Loop through messages and display
 onValue(ref(db, '/'), (snapshot) => {
@@ -86,9 +94,15 @@ onValue(ref(db, '/'), (snapshot) => {
 
         const messageForBoard = document.createElement('div');
         messageDiv.prepend(messageForBoard);
+        messageForBoard.style.backgroundColor = childData.color;
         const messageP = document.createElement('p');
         messageForBoard.appendChild(messageP);
+
+        messageP.innerText = childData.message;
+        messageForBoard.classList.add("messageCard");
+
         messageP.innerText = childData.name + ": " + childData.message;
+
     });
 });
 
