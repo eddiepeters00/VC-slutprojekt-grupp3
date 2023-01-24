@@ -32,19 +32,15 @@ messageBtn.addEventListener('click', createMessage);
 function createMessage(event) {
     event.preventDefault();
 
-    console.log(userMessage);
 
     const username = usernameInput.value;
     const userMessage = messageBox.value;
 
-    // Write data
-    function writeUserData() {
-        set(ref(db, `${username}`), {
-            message: `${userMessage}`
-        });
-    }
-
-    writeUserData();
+   //Pushar message till databasen
+    push( ref(db , "/") , {
+        name: username,
+        message: userMessage
+    })
 
     console.log(userMessage)
     usernameInput.value = '';
@@ -81,9 +77,3 @@ onValue(ref(db, '/'), (snapshot) => {
         messageP.innerText = childData.message;
     });
 });
-
-//Pushar message till databasen
-push( ref(db , "/") , {
-name:"Johan",
-message:"hello world"
-})
