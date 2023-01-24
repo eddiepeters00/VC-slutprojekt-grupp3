@@ -25,36 +25,6 @@ const db = getDatabase(app);
 console.log(db);
 
 
-// Write data
-function writeUserData() {
-    set(ref(db, 'Eddie'), {
-        message: 'Hello world'
-    });
-}
-
-writeUserData();
-
-
-// Read data (only once)
-onValue(ref(db, 'Eddie'), (snapshot) => {
-    const data = snapshot.val();
-    // alert(data.message);
-}, { onlyOnce: true }
-);
-
-
-//Loop through shit
-onValue(ref(db, '/'), (snapshot) => {
-    snapshot.forEach((childSnapshot) => {
-        const childKey = childSnapshot.key;
-        const childData = childSnapshot.val();
-        console.log(childKey, childData);
-    });
-}, {
-    onlyOnce: true
-});
-
-
 //Remove shit
 remove(ref(db, 'Henrik')).then(() => {
     console.log('Henrik removed');
@@ -63,21 +33,41 @@ remove(ref(db, 'Henrik')).then(() => {
 
 // här börjar kod som inte är firebase-igt
 
-// input-message som sparas som ett inlägg
+// input-message som sparas i databas
 const messageBox = document.querySelector('#message-input');
 const messageBtn = document.querySelector('#message-btn');
 messageBtn.addEventListener('click', createMessage);
+const userMessage = messageBox.value;
 
-function createMessage(event){
+function createMessage(event) {
     event.preventDefault();
 
-    const messageDiv = document.querySelector('#messages');
-    const messageForBoard = document.createElement('div');
-    messageDiv.prepend(messageForBoard);
-    const messageP = document.createElement('p');
-    messageForBoard.appendChild(messageP);
-    const userMessage = messageBox.value;
-    messageP.innerText = userMessage;
+    // Write data
+    function writeUserData() {
+        set(ref(db, 'User'), {
+            message: `${userMessage}`
+        });
+    }
+
+    writeUserData();
 
     messageBox.value = '';
 }
+
+// Loop through messages and display
+onValue(ref(db, '/'), (snapshot) => {
+    snapshot.forEach((childSnapshot) => {
+        const childKey = childSnapshot.key;
+        const childData = childSnapshot.val();
+        console.log(childKey, childData);
+
+        const messageDiv = document.querySelector('#messages');
+        const messageForBoard = document.createElement('div');
+        messageDiv.prepend(messageForBoard);
+        const messageP = document.createElement('p');
+        messageForBoard.appendChild(messageP);
+        messageP.innerText = childData.message;
+    });
+}, {
+    onlyOnce: true
+});
