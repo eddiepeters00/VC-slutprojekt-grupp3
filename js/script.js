@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-import { getDatabase, ref, set, onValue, remove, push, update } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
+import { getDatabase, ref, set, onValue, remove, push,update } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -25,27 +25,17 @@ const db = getDatabase(app);
 console.log(db);
 
 
-// Write data
-function writeUserData() {
-    set(ref(db, 'Eddie'), {
-        message: `This is a message from User:`
-    });
-}
-
-writeUserData();
+// Detect if user is new or not
+const isNew = localStorage.getItem('userId') == null;
+if(isNew){
+   //User is new
+   //Show input for username
+} 
 
 
-// Read data (only once)
-onValue(ref(db, 'Eddie'), (snapshot) => {
-    const data = snapshot.val();
-    // alert(data.message);
-}, { onlyOnce: true }
-);
-
-
-//Remove shit
-remove(ref(db, 'Henrik')).then(() => {
-    console.log('Henrik removed');
+// Generate a random id and save in the database 
+var id = push(ref(db, 'User'),  {
+    test:456
 });
 
 
