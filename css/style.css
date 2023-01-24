@@ -1,0 +1,46 @@
+:root {
+
+    --bgColor: #31d9f6;
+    --txtColor: hsl(195, 9%, 9%);   
+}
+
+body{
+    background-color: var(--bgColor);
+    color: var(--txtColor);
+}
+
+/* -------------------- DARK MODE -------------------- */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+    --bgColor: hsl(216, 33%, 16%);
+    --txtColor: hsl(196, 27%, 92%); 
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    display: flex; 
+    margin: 0 auto;
+    align-items: center;
+    width: 90%;
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+form {
+    width: 100%;
+}
+
+#message-btn {
+    width: 100%;
+    border-radius: 0%;
+    margin-top: 0;
+    height: 2rem;
+}
