@@ -1,0 +1,103 @@
+:root {
+
+    --bgColor: #31d9f6;
+    --txtColor: hsl(195, 9%, 9%); 
+    --userInputTopBottom: rgb(44, 155, 186);  
+
+    /* Card colors */
+
+    --cardColor1: #36f080;
+    --cardColor2: #ef5cf7;
+    --cardColor3: #ebba50;
+    --cardColor4: #ea545e;
+}
+
+body{
+    background-color: var(--bgColor);
+    color: var(--txtColor);
+}
+
+/* -------------------- DARK MODE -------------------- */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+    --bgColor: hsl(216, 33%, 16%);
+    --txtColor: hsl(196, 27%, 92%); 
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex; 
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    width: 85%;
+}
+
+textarea {
+    width: 100%;
+    height: 4rem;
+    margin-bottom: 0;
+    display: block;
+    border: none;
+    resize: none;
+}
+
+form {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+#message-input-header {
+    height: 2rem;
+    background-color: var(--userInputTopBottom);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#color-picker {
+    display: flex;
+}
+
+#color-picker div {
+    margin-left: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid black;
+}
+
+#color-picker div:nth-child(1) {
+    background-color: var(--cardColor1);
+}
+
+#color-picker div:nth-child(2) {
+    background-color: var(--cardColor2);
+}
+
+#color-picker div:nth-child(3) {
+    background-color: var(--cardColor3);
+}
+
+#color-picker div:nth-child(4) {
+    background-color: var(--cardColor4);
+}
+
+#message-btn {
+    width: 100%;
+    border-radius: 0%;
+    margin-top: 0;
+    height: 2rem;
+    background-color: var(--userInputTopBottom);
+    border: none;
+    display: block; 
+    cursor: pointer;
+}
