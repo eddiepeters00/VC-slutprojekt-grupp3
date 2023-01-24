@@ -101,3 +101,12 @@ form {
     display: block; 
     cursor: pointer;
 }
+
+.messageCard {
+    margin: 1em 0;
+    padding: 1em;
+}
+
+#messages {
+    width: 100%;
+}
