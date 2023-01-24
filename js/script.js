@@ -22,27 +22,16 @@ const db = getDatabase(app);
 console.log(db);
 
 
-// Detect if user is new or not
-const isNew = localStorage.getItem('userId') == null;
-if(isNew){
-   //User is new
-   //Show input for username
-   console.log('NEW GUEST');
-} else{
-    console.log('ALREADY VISITED');
-}
-
-
 // input-message som sparas i databas
-const messageBox = document.getElementById('message-input');
+const usernameInput = document.querySelector('#username')
+const messageBox = document.getElementById('#message-input');
 const messageBtn = document.querySelector('#message-btn');
 messageBtn.addEventListener('click', createMessage);
 
 
 function createMessage(event) {
     event.preventDefault();
-    
-    const userMessage = messageBox.value;
+
     console.log(userMessage);
 
     const username = usernameInput.value;
