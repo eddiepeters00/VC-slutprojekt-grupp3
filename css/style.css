@@ -1,0 +1,19 @@
+:root {
+
+    --bgColor: #31d9f6;
+    --txtColor: hsl(195, 9%, 9%);   
+}
+
+body{
+    background-color: var(--bgColor);
+    color: var(--txtColor);
+}
+
+/* -------------------- DARK MODE -------------------- */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+    --bgColor: hsl(216, 33%, 16%);
+    --txtColor: hsl(196, 27%, 92%); 
+    }
+}
