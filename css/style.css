@@ -1,7 +1,8 @@
 :root {
 
     --bgColor: #31d9f6;
-    --txtColor: hsl(195, 9%, 9%);   
+    --txtColor: hsl(195, 9%, 9%); 
+    --userInputTopBottom: rgb(44, 155, 186);  
 }
 
 body{
@@ -20,22 +21,41 @@ body{
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 main {
     display: flex; 
     margin: 0 auto;
     align-items: center;
-    width: 90%;
+    width: 85%;
 }
 
 textarea {
     width: 100%;
+    height: 4rem;
     margin-bottom: 0;
+    display: block;
+    border: none;
+    resize: none;
 }
 
 form {
     width: 100%;
+    margin-top: 1rem;
+}
+
+#message-input-header {
+    height: 2rem;
+    background-color: var(--userInputTopBottom);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#color-picker {
+    display: flex;
 }
 
 #message-btn {
@@ -43,4 +63,7 @@ form {
     border-radius: 0%;
     margin-top: 0;
     height: 2rem;
+    background-color: var(--userInputTopBottom);
+    border: none;
+    display: block; 
 }
