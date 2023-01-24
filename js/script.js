@@ -38,10 +38,6 @@ function createMessage(event) {
     const username = usernameInput.value;
     const userMessage = messageBox.value;
 
-
-    //Pushar message till databasen
-    push(ref(db, "/"), {
-
     //if-sats för att user måste ange ett username och ett message
     if(username == "" && userMessage == ""){
         alert("Username required & message-box cannot be empty")
