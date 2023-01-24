@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-import { getDatabase, ref, set, onValue, remove, push,update } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
+import { getDatabase, ref, set, onValue, remove, push, update } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -25,20 +25,6 @@ const db = getDatabase(app);
 console.log(db);
 
 
-// Detect if user is new or not
-let userId = 0;
-
-const isNew = localStorage.getItem('userId') == null;
-if(isNew){
-    localStorage.setItem('userId', userId);
-    //New user 
-    userId++;
-    console.log(localStorage.getItem('userId'));
-} else{
-    console.log(localStorage.getItem('userId'));
-    //User is not new
-}
-
 // Write data
 function writeUserData() {
     set(ref(db, 'Eddie'), {
@@ -56,16 +42,6 @@ onValue(ref(db, 'Eddie'), (snapshot) => {
 }, { onlyOnce: true }
 );
 
-
-var id = push(ref(db, 'User'),  {
-    test:456
-})
-update(ref(db, 'User'), {
-    id: id.key
-});
-remove(ref(db, 'User/'+ id.key)).then(() => {
-    console.log('generated info removed');
-});
 
 //Remove shit
 remove(ref(db, 'Henrik')).then(() => {
