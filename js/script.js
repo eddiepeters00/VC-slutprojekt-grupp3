@@ -36,23 +36,29 @@ if(isNew){
 // här börjar kod som inte är firebase-igt
 
 // input-message som sparas i databas
+
+const usernameInput = document.querySelector('#username');
 const messageBox = document.querySelector('#message-input');
 const messageBtn = document.querySelector('#message-btn');
 messageBtn.addEventListener('click', createMessage);
-const userMessage = messageBox.value;
 
 function createMessage(event) {
     event.preventDefault();
 
+    const username = usernameInput.value;
+    const userMessage = messageBox.value;
+
     // Write data
     function writeUserData() {
-        set(ref(db, 'User'), {
+        set(ref(db, `${username}`), {
             message: `${userMessage}`
         });
     }
 
     writeUserData();
 
+    console.log(userMessage)
+    usernameInput.value = '';
     messageBox.value = '';
 }
 
