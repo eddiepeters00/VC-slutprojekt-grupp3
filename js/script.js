@@ -1,10 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-import { getDatabase, ref, set, onValue, remove, push,update } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
+import { getDatabase, ref, set, onValue, remove, push, update } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
 
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -30,19 +27,23 @@ const isNew = localStorage.getItem('userId') == null;
 if(isNew){
    //User is new
    //Show input for username
-} 
+   console.log('NEW GUEST');
+} else{
+    console.log('ALREADY VISITED');
+}
 
-
-// här börjar kod som inte är firebase-igt
 
 // input-message som sparas i databas
-const messageBox = document.querySelector('#message-input');
+const messageBox = document.getElementById('message-input');
 const messageBtn = document.querySelector('#message-btn');
 messageBtn.addEventListener('click', createMessage);
-const userMessage = messageBox.value;
+
 
 function createMessage(event) {
     event.preventDefault();
+    
+    const userMessage = messageBox.value;
+    console.log(userMessage);
 
     // Write data
     function writeUserData() {
@@ -64,25 +65,32 @@ function pickColor(event) {
     let cardColor= event.target.id;
     console.log(cardColor)
     messageBox.style.backgroundColor = cardColor;
-
 }
 
 colorPicker.addEventListener("click",pickColor);
 
 // Loop through messages and display
 onValue(ref(db, '/'), (snapshot) => {
+    const messageDiv = document.querySelector('#messages');
+    messageDiv.innerHTML = '';
+
+
     snapshot.forEach((childSnapshot) => {
         const childKey = childSnapshot.key;
         const childData = childSnapshot.val();
         console.log(childKey, childData);
 
-        const messageDiv = document.querySelector('#messages');
         const messageForBoard = document.createElement('div');
         messageDiv.prepend(messageForBoard);
         const messageP = document.createElement('p');
         messageForBoard.appendChild(messageP);
         messageP.innerText = childData.message;
     });
-}, {
-    onlyOnce: true
 });
+
+//Pushar message till databasen
+push( ref(db , "/") , {
+name:"Johan",
+message:"hello world"
+
+})
