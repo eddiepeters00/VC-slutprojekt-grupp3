@@ -24,7 +24,7 @@ console.log(db);
 
 // input-message som sparas i databas
 const usernameInput = document.querySelector('#username')
-const messageBox = document.getElementById('#message-input');
+const messageBox = document.querySelector('#message-input');
 const messageBtn = document.querySelector('#message-btn');
 messageBtn.addEventListener('click', createMessage);
 
@@ -86,5 +86,4 @@ onValue(ref(db, '/'), (snapshot) => {
 push( ref(db , "/") , {
 name:"Johan",
 message:"hello world"
-
 })
