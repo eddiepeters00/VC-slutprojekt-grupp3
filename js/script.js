@@ -25,10 +25,23 @@ const db = getDatabase(app);
 console.log(db);
 
 
+// Detect if user is new or not
+let userId = 0;
+
+const isNew = localStorage.getItem('visit') == null;
+if(isNew){
+    localStorage.setItem('visit', '.');
+    //New user 
+    userId++;
+    console.log(userId);
+} else{
+    //User is not new
+}
+
 // Write data
 function writeUserData() {
-    set(ref(db, 'Eddie'), {
-        message: 'Hello world'
+    set(ref(db, userId), {
+        message: `This is a message from User: ${userId}`
     });
 }
 
@@ -43,16 +56,7 @@ onValue(ref(db, 'Eddie'), (snapshot) => {
 );
 
 
-//Loop through shit
-onValue(ref(db, '/'), (snapshot) => {
-    snapshot.forEach((childSnapshot) => {
-        const childKey = childSnapshot.key;
-        const childData = childSnapshot.val();
-        console.log(childKey, childData);
-    });
-}, {
-    onlyOnce: true
-});
+
 
 
 //Remove shit
