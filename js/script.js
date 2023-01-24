@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-import { getDatabase, ref, set, onValue, remove, push } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
+import { getDatabase, ref, set, onValue, remove, push,update } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -26,64 +26,32 @@ console.log(db);
 
 
 // Detect if user is new or not
-let userId = 0;
-
 const isNew = localStorage.getItem('userId') == null;
 if(isNew){
-    localStorage.setItem('userId', userId);
-    //New user 
-    userId++;
-    console.log(localStorage.getItem('userId'));
-} else{
-    console.log(localStorage.getItem('userId'));
-
-    //User is not new
-}
-
-// Write data
-function writeUserData() {
-    set(ref(db, 'Eddie'), {
-        message: `This is a message from User:`
-    });
-}
-
-writeUserData();
-
-
-// Read data (only once)
-onValue(ref(db, 'Eddie'), (snapshot) => {
-    const data = snapshot.val();
-    // alert(data.message);
-}, { onlyOnce: true }
-);
-
-
-
-
-
-//Remove shit
-remove(ref(db, 'Henrik')).then(() => {
-    console.log('Henrik removed');
-});
+   //User is new
+   //Show input for username
+} 
 
 
 // här börjar kod som inte är firebase-igt
 
-// input-message som sparas som ett inlägg
+// input-message som sparas i databas
 const messageBox = document.querySelector('#message-input');
 const messageBtn = document.querySelector('#message-btn');
 messageBtn.addEventListener('click', createMessage);
+const userMessage = messageBox.value;
 
-function createMessage(event){
+function createMessage(event) {
     event.preventDefault();
 
-    const messageDiv = document.querySelector('#messages');
-    const messageForBoard = document.createElement('div');
-    messageDiv.prepend(messageForBoard);
-    const messageP = document.createElement('p');
-    messageForBoard.appendChild(messageP);
-    const userMessage = messageBox.value;
-    messageP.innerText = userMessage;
+    // Write data
+    function writeUserData() {
+        set(ref(db, 'User'), {
+            message: `${userMessage}`
+        });
+    }
+
+    writeUserData();
 
     messageBox.value = '';
 }
@@ -100,3 +68,21 @@ function pickColor(event) {
 }
 
 colorPicker.addEventListener("click",pickColor);
+
+// Loop through messages and display
+onValue(ref(db, '/'), (snapshot) => {
+    snapshot.forEach((childSnapshot) => {
+        const childKey = childSnapshot.key;
+        const childData = childSnapshot.val();
+        console.log(childKey, childData);
+
+        const messageDiv = document.querySelector('#messages');
+        const messageForBoard = document.createElement('div');
+        messageDiv.prepend(messageForBoard);
+        const messageP = document.createElement('p');
+        messageForBoard.appendChild(messageP);
+        messageP.innerText = childData.message;
+    });
+}, {
+    onlyOnce: true
+});
