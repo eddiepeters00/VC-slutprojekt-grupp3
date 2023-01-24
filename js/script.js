@@ -28,20 +28,22 @@ console.log(db);
 // Detect if user is new or not
 let userId = 0;
 
-const isNew = localStorage.getItem('visit') == null;
+const isNew = localStorage.getItem('userId') == null;
 if(isNew){
-    localStorage.setItem('visit', '.');
+    localStorage.setItem('userId', userId);
     //New user 
     userId++;
-    console.log(userId);
+    console.log(localStorage.getItem('userId'));
 } else{
+    console.log(localStorage.getItem('userId'));
+
     //User is not new
 }
 
 // Write data
 function writeUserData() {
-    set(ref(db, userId), {
-        message: `This is a message from User: ${userId}`
+    set(ref(db, 'Eddie'), {
+        message: `This is a message from User:`
     });
 }
 
