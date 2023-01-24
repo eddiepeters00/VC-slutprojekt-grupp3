@@ -22,17 +22,6 @@ const db = getDatabase(app);
 console.log(db);
 
 
-// Detect if user is new or not
-const isNew = localStorage.getItem('userId') == null;
-if(isNew){
-   //User is new
-   //Show input for username
-   console.log('NEW GUEST');
-} else{
-    console.log('ALREADY VISITED');
-}
-
-
 // input-message som sparas i databas
 const messageBox = document.getElementById('message-input');
 const messageBtn = document.querySelector('#message-btn');
@@ -97,5 +86,4 @@ onValue(ref(db, '/'), (snapshot) => {
 push( ref(db , "/") , {
 name:"Johan",
 message:"hello world"
-
 })
