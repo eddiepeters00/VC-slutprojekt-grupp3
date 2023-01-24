@@ -74,6 +74,6 @@ onValue(ref(db, '/'), (snapshot) => {
         messageDiv.prepend(messageForBoard);
         const messageP = document.createElement('p');
         messageForBoard.appendChild(messageP);
-        messageP.innerText = childData.message;
+        messageP.innerText = childData.name + ": " + childData.message;
     });
 });
