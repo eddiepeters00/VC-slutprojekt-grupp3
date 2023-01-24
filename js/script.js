@@ -87,3 +87,16 @@ function createMessage(event){
 
     messageBox.value = '';
 }
+
+// Change color of input/textarea
+
+const colorPicker = document.querySelector("#color-picker");
+
+function pickColor(event) {
+    let cardColor= event.target.id;
+    console.log(cardColor)
+    messageBox.style.backgroundColor = cardColor;
+
+}
+
+colorPicker.addEventListener("click",pickColor);
