@@ -36,6 +36,20 @@ function createMessage(event) {
     const username = usernameInput.value;
     const userMessage = messageBox.value;
 
+    //if-sats för att user måste ange ett username och ett message
+    if(username == "" && userMessage == ""){
+        alert("Username required & message-box cannot be empty")
+    }
+
+    else if (username == ""){
+        alert("Username required")
+    }
+
+    else if(userMessage == ""){
+        alert("Message-box cannot be empty")
+    }
+
+    else {
    //Pushar message till databasen
     push( ref(db , "/") , {
         name: username,
@@ -45,6 +59,7 @@ function createMessage(event) {
     console.log(userMessage)
     usernameInput.value = '';
     messageBox.value = '';
+    }
 }
 
 // Change color of input/textarea
@@ -64,7 +79,6 @@ onValue(ref(db, '/'), (snapshot) => {
     const messageDiv = document.querySelector('#messages');
     messageDiv.innerHTML = '';
 
-
     snapshot.forEach((childSnapshot) => {
         const childKey = childSnapshot.key;
         const childData = childSnapshot.val();
@@ -77,3 +91,4 @@ onValue(ref(db, '/'), (snapshot) => {
         messageP.innerText = childData.name + ": " + childData.message;
     });
 });
+
