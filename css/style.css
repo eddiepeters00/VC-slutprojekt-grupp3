@@ -3,6 +3,13 @@
     --bgColor: #31d9f6;
     --txtColor: hsl(195, 9%, 9%); 
     --userInputTopBottom: rgb(44, 155, 186);  
+
+    /* Card colors */
+
+    --cardColor1: #36f080;
+    --cardColor2: #ef5cf7;
+    --cardColor3: #ebba50;
+    --cardColor4: #ea545e;
 }
 
 body{
@@ -27,6 +34,7 @@ body{
 
 main {
     display: flex; 
+    flex-direction: column;
     margin: 0 auto;
     align-items: center;
     width: 85%;
@@ -58,6 +66,31 @@ form {
     display: flex;
 }
 
+#color-picker div {
+    margin-left: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid black;
+}
+
+#color-picker div:nth-child(1) {
+    background-color: var(--cardColor1);
+}
+
+#color-picker div:nth-child(2) {
+    background-color: var(--cardColor2);
+}
+
+#color-picker div:nth-child(3) {
+    background-color: var(--cardColor3);
+}
+
+#color-picker div:nth-child(4) {
+    background-color: var(--cardColor4);
+}
+
 #message-btn {
     width: 100%;
     border-radius: 0%;
@@ -66,4 +99,5 @@ form {
     background-color: var(--userInputTopBottom);
     border: none;
     display: block; 
+    cursor: pointer;
 }
