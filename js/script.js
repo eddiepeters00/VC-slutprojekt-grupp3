@@ -42,7 +42,7 @@ messageBtn.addEventListener('click', createMessage);
 function createMessage(event) {
     event.preventDefault();
     
-    const userMessage = messageBox.value;
+    
     console.log(userMessage);
 
     const username = usernameInput.value;
