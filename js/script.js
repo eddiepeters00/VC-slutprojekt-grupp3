@@ -23,15 +23,15 @@ console.log(db);
 
 
 // input-message som sparas i databas
-const messageBox = document.getElementById('message-input');
+const usernameInput = document.querySelector('#username')
+const messageBox = document.querySelector('#message-input');
 const messageBtn = document.querySelector('#message-btn');
 messageBtn.addEventListener('click', createMessage);
 
 
 function createMessage(event) {
     event.preventDefault();
-    
-    
+
     console.log(userMessage);
 
     const username = usernameInput.value;
