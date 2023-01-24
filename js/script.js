@@ -45,15 +45,20 @@ function createMessage(event) {
     const userMessage = messageBox.value;
     console.log(userMessage);
 
+    const username = usernameInput.value;
+    const userMessage = messageBox.value;
+
     // Write data
     function writeUserData() {
-        set(ref(db, 'User'), {
+        set(ref(db, `${username}`), {
             message: `${userMessage}`
         });
     }
 
     writeUserData();
 
+    console.log(userMessage)
+    usernameInput.value = '';
     messageBox.value = '';
 }
 
