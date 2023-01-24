@@ -38,7 +38,7 @@ writeUserData();
 // Read data (only once)
 onValue(ref(db, 'Eddie'), (snapshot) => {
     const data = snapshot.val();
-    alert(data.message);
+    // alert(data.message);
 }, { onlyOnce: true }
 );
 
@@ -59,3 +59,25 @@ onValue(ref(db, '/'), (snapshot) => {
 remove(ref(db, 'Henrik')).then(() => {
     console.log('Henrik removed');
 });
+
+
+// här börjar kod som inte är firebase-igt
+
+// input-message som sparas som ett inlägg
+const messageBox = document.querySelector('#message-input');
+const messageBtn = document.querySelector('#message-btn');
+messageBtn.addEventListener('click', createMessage);
+
+function createMessage(event){
+    event.preventDefault();
+
+    const messageDiv = document.querySelector('#messages');
+    const messageForBoard = document.createElement('div');
+    messageDiv.prepend(messageForBoard);
+    const messageP = document.createElement('p');
+    messageForBoard.appendChild(messageP);
+    const userMessage = messageBox.value;
+    messageP.innerText = userMessage;
+
+    messageBox.value = '';
+}
