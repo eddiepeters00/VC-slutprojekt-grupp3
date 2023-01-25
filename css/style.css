@@ -1,5 +1,4 @@
 :root {
-
     --bgColor: #31d9f6;
     --txtColor: hsl(195, 9%, 9%);
     --userInputTopBottom: rgb(44, 155, 186);
@@ -17,14 +16,6 @@ body {
     color: var(--txtColor);
 }
 
-/* -------------------- DARK MODE -------------------- */
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bgColor: hsl(216, 33%, 16%);
-        --txtColor: hsl(196, 27%, 92%);
-    }
-}
 
 * {
     box-sizing: border-box;
@@ -111,6 +102,7 @@ form {
     width: 100%;
 }
 
+/*Progress-bar*/
 .progress {
     margin: 2rem;
     height: 1rem;
@@ -149,4 +141,20 @@ form {
     }
 }
 
-;
+
+/* -------------------- DARK MODE -------------------- */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bgColor: hsl(216, 33%, 16%);
+        --txtColor: hsl(196, 27%, 92%);
+
+        /* Card colors */
+        --cardColor1: #36f08034;
+        --cardColor2: #ef5cf721;
+        --cardColor3: #ebba5041;
+        --cardColor4: #ea545e31;
+    }
+
+
+}
