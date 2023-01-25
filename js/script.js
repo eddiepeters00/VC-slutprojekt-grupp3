@@ -38,7 +38,7 @@ const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/779");
 const pickedColors = document.querySelectorAll('.picked-color');
 
 pickedColors.forEach(color => {
-    color.addEventListener('click', function(){
+    color.addEventListener('click', function () {
         cardColor = getComputedStyle(this).backgroundColor;
         messageBox.style.backgroundColor = cardColor;
     });
@@ -119,3 +119,45 @@ function getTimestamp() {
     timestamp = `${dateSplit[1]} ${dateSplit[2]} ${dateSplit[3]} ${dateSplit[4]}`;
     console.log(timestamp);
 }
+
+//Search functions, display in a container and show the total hits of matching word
+onValue(ref(db, '/'), (snapshot) => {
+    const searchInput = document.querySelector('#search-input');
+    const searchBtn = document.querySelector('#search-btn');
+    const searchErrorText = document.querySelector('.search-error-text');
+    const searchResultsContainer = document.querySelector('#search-results-container');
+    const searchResultCount = document.querySelector('#search-result-count');
+    
+    searchBtn.addEventListener('click', searchMessages);
+
+    function searchMessages() {
+        const searchQuery = searchInput.value.toLowerCase();
+        if (searchInput.value <= 0 ){
+            searchResultsContainer.innerHTML = '';
+            searchResultCount.innerText = ``;
+            searchErrorText.innerText = 'No inputs';
+        }
+        else{
+            const filteredMessages = [];
+            snapshot.forEach(childSnapshot => {
+                if (childSnapshot.val().message.toLowerCase().includes(searchQuery.toLowerCase()))
+                    filteredMessages.push(childSnapshot);
+            });
+    
+            searchResultsContainer.innerHTML = '';
+    
+            filteredMessages.forEach(function (childSnapshot) {
+                const childData = childSnapshot.val();
+                const messageDiv = document.createElement('div');
+                messageDiv.innerText = childData.name + ": " + childData.message;
+                messageDiv.style.backgroundColor = childData.color;
+                messageDiv.classList.add("messageCard");
+                searchResultsContainer.appendChild(messageDiv);
+            });
+    
+            searchResultCount.innerText = `${filteredMessages.length} matching results`;
+            searchInput.value = '';
+            searchErrorText.innerText = '';
+        }
+    }
+});
