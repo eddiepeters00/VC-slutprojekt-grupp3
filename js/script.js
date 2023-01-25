@@ -30,6 +30,7 @@ const usernameInput = document.querySelector('#username')
 const messageBox = document.querySelector('#message-input');
 const messageBtn = document.querySelector('#message-btn');
 messageBtn.addEventListener('click', createMessage);
+const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/779");
 
 const colorPicker = document.querySelector("#color-picker");
 colorPicker.addEventListener("click", pickColor);
@@ -39,6 +40,7 @@ function createMessage(event) {
 
     const username = usernameInput.value;
     const userMessage = messageBox.value;
+    audio.play();
 
     //if-sats för att user måste ange ett username och ett message
     if (username == "" && userMessage == "") {
