@@ -38,7 +38,7 @@ const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/779");
 const pickedColors = document.querySelectorAll('.picked-color');
 
 pickedColors.forEach(color => {
-    color.addEventListener('click', function(){
+    color.addEventListener('click', function () {
         cardColor = getComputedStyle(this).backgroundColor;
         messageBox.style.backgroundColor = cardColor;
     });
@@ -118,4 +118,26 @@ function getTimestamp() {
     console.log(dateSplit);
     timestamp = `${dateSplit[1]} ${dateSplit[2]} ${dateSplit[3]} ${dateSplit[4]}`;
     console.log(timestamp);
+}
+
+//Search functions
+const searchInput = document.querySelector('#search-input');
+const searchBtn = document.querySelector('#search-btn');
+searchBtn.addEventListener('click', searchMessages);
+
+function searchMessages() {
+    const searchQuery = searchInput.value.toLowerCase();
+    const filteredMessages = snapshot.filter(childSnapshot => childSnapshot.val().message.toLowerCase().includes(searchQuery));
+    const searchResultsContainer = document.querySelector('#search-results-container');
+    searchResultsContainer.innerHTML = '';
+    filteredMessages.forEach(function (childSnapshot) {
+        const childData = childSnapshot.val();
+        const messageDiv = document.createElement('div');
+        messageDiv.innerText = childData.name + ": " + childData.message;
+        messageDiv.style.backgroundColor = childData.color;
+        messageDiv.classList.add("messageCard");
+        searchResultsContainer.appendChild(messageDiv);
+    });
+    const searchResultCount = document.querySelector('#search-result-count');
+    searchResultCount.innerText = `${filteredMessages.length} matching results`;
 }

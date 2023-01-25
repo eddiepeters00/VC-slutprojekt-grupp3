@@ -6,13 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" type="module" defer></script>
+    
     <title>Document</title>
     <link rel="icon" type="image/png" href="images/favicon-32x32.png">
 </head>
 
 <body>
     <main>
+        <div class="search-box">
+            <input type="text" id="search-input">
+            <button id="search-btn">Search</button>
+            <label id="search-result-count"></label>
+        </div>
+        <div id="search-results-container"></div>
+
         <form>
             <div id="message-input-header">
                 <input id="username" placeholder="username"></input>
@@ -33,6 +40,7 @@
           
         <div id="messages"></div>
     </main>
+    <script src="js/script.js" type="module" defer></script>
 </body>
 
 </html>
