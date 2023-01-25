@@ -55,8 +55,6 @@ function createMessage(event) {
 
     else {
         //Pushar message till databasen
-        progressBar.style.display = 'block';
-
         push(ref(db, "/"), {
 
             name: username,
