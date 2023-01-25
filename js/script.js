@@ -22,6 +22,8 @@ const db = getDatabase(app);
 console.log(db);
 
 let cardColor;
+const progressBar = document.getElementById('progress-bar');
+
 
 // input-message som sparas i databas
 const usernameInput = document.querySelector('#username')
@@ -39,30 +41,32 @@ function createMessage(event) {
     const userMessage = messageBox.value;
 
     //if-sats för att user måste ange ett username och ett message
-    if(username == "" && userMessage == ""){
+    if (username == "" && userMessage == "") {
         alert("Username required & message-box cannot be empty")
     }
 
-    else if (username == ""){
+    else if (username == "") {
         alert("Username required")
     }
 
-    else if(userMessage == ""){
+    else if (userMessage == "") {
         alert("Message-box cannot be empty")
     }
 
     else {
-   //Pushar message till databasen
-    push( ref(db , "/") , {
+        //Pushar message till databasen
+        progressBar.style.display = 'block';
 
-        name: username,
-        message: userMessage,
-        color: cardColor
-    })
+        push(ref(db, "/"), {
 
-    console.log(userMessage)
-    usernameInput.value = '';
-    messageBox.value = '';
+            name: username,
+            message: userMessage,
+            color: cardColor
+        })
+
+        console.log(userMessage)
+        usernameInput.value = '';
+        messageBox.value = '';
     }
 }
 
@@ -99,6 +103,7 @@ onValue(ref(db, '/'), (snapshot) => {
 
         messageP.innerText = childData.name + ": " + childData.message;
 
+        progressBar.style.display = 'none';
     });
 });
 

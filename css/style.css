@@ -1,8 +1,8 @@
 :root {
 
     --bgColor: #31d9f6;
-    --txtColor: hsl(195, 9%, 9%); 
-    --userInputTopBottom: rgb(44, 155, 186);  
+    --txtColor: hsl(195, 9%, 9%);
+    --userInputTopBottom: rgb(44, 155, 186);
 
     /* Card colors */
 
@@ -12,7 +12,7 @@
     --cardColor4: #ea545e;
 }
 
-body{
+body {
     background-color: var(--bgColor);
     color: var(--txtColor);
 }
@@ -21,8 +21,8 @@ body{
 
 @media (prefers-color-scheme: dark) {
     :root {
-    --bgColor: hsl(216, 33%, 16%);
-    --txtColor: hsl(196, 27%, 92%); 
+        --bgColor: hsl(216, 33%, 16%);
+        --txtColor: hsl(196, 27%, 92%);
     }
 }
 
@@ -33,7 +33,7 @@ body{
 }
 
 main {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     margin: 0 auto;
     align-items: center;
@@ -98,7 +98,7 @@ form {
     height: 2rem;
     background-color: var(--userInputTopBottom);
     border: none;
-    display: block; 
+    display: block;
     cursor: pointer;
 }
 
@@ -110,3 +110,43 @@ form {
 #messages {
     width: 100%;
 }
+
+.progress {
+    margin: 2rem;
+    height: 1rem;
+    width: 50%;
+    border: 10px solid #0f0905;
+    border-radius: 15px;
+}
+
+.progress .color {
+    background-color: #890404;
+    width: 0px;
+    height: 10px;
+    border-radius: 15px;
+    animation: progres 1s linear;
+}
+
+@keyframes progres {
+    0% {
+        width: 0%;
+    }
+
+    25% {
+        width: 50%;
+    }
+
+    50% {
+        width: 75%;
+    }
+
+    75% {
+        width: 85%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+;
