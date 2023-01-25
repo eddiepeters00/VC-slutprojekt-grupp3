@@ -33,8 +33,17 @@ const messageBtn = document.querySelector('#message-btn');
 messageBtn.addEventListener('click', createMessage);
 const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/779");
 
-const colorPicker = document.querySelector("#color-picker");
-colorPicker.addEventListener("click", pickColor);
+
+//Get the background-color from color-picker
+const pickedColors = document.querySelectorAll('.picked-color');
+
+pickedColors.forEach(color => {
+    color.addEventListener('click', function(){
+        cardColor = getComputedStyle(this).backgroundColor;
+        messageBox.style.backgroundColor = cardColor;
+    });
+});
+
 
 function createMessage(event) {
     event.preventDefault();
@@ -70,18 +79,6 @@ function createMessage(event) {
         console.log(userMessage)
         usernameInput.value = '';
         messageBox.value = '';
-    }
-}
-
-// Change color of input/textarea
-
-function pickColor() {
-    const colorChildren = colorPicker.children;
-    for (let i = 0; i < colorChildren.length; i++) {
-        colorChildren[i].addEventListener("click", function () {
-            cardColor = this.id;
-            messageBox.style.backgroundColor = cardColor;
-        });
     }
 }
 
