@@ -23,6 +23,7 @@ console.log(db);
 
 let cardColor;
 const progressBar = document.getElementById('progress-bar');
+let timestamp;
 
 
 // input-message som sparas i databas
@@ -37,6 +38,7 @@ colorPicker.addEventListener("click", pickColor);
 
 function createMessage(event) {
     event.preventDefault();
+    getTimestamp();
 
     const username = usernameInput.value;
     const userMessage = messageBox.value;
@@ -61,7 +63,8 @@ function createMessage(event) {
 
             name: username,
             message: userMessage,
-            color: cardColor
+            color: cardColor,
+            time: timestamp
         })
 
         console.log(userMessage)
@@ -97,7 +100,10 @@ onValue(ref(db, '/'), (snapshot) => {
         messageForBoard.style.backgroundColor = childData.color;
         const messageP = document.createElement('p');
         messageForBoard.appendChild(messageP);
+        const timestampText = document.createElement('p');
+        messageForBoard.appendChild(timestampText);
 
+        timestampText.innerText = childData.time;
         messageP.innerText = childData.message;
         messageForBoard.classList.add("messageCard");
 
@@ -107,3 +113,12 @@ onValue(ref(db, '/'), (snapshot) => {
     });
 });
 
+function getTimestamp() {
+    // get timestamp
+    const date = new Date();
+    const dateToString = date.toString();
+    const dateSplit = dateToString.split(' ');
+    console.log(dateSplit);
+    timestamp = `${dateSplit[1]} ${dateSplit[2]} ${dateSplit[3]} ${dateSplit[4]}`;
+    console.log(timestamp);
+}
