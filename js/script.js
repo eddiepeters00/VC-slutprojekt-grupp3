@@ -127,25 +127,25 @@ onValue(ref(db, '/'), (snapshot) => {
     const searchErrorText = document.querySelector('.search-error-text');
     const searchResultsContainer = document.querySelector('#search-results-container');
     const searchResultCount = document.querySelector('#search-result-count');
-    
+
     searchBtn.addEventListener('click', searchMessages);
 
     function searchMessages() {
         const searchQuery = searchInput.value.toLowerCase();
-        if (searchInput.value <= 0 ){
+        if (searchInput.value <= 0) {
             searchResultsContainer.innerHTML = '';
             searchResultCount.innerText = ``;
             searchErrorText.innerText = 'No inputs';
         }
-        else{
+        else {
             const filteredMessages = [];
             snapshot.forEach(childSnapshot => {
                 if (childSnapshot.val().message.toLowerCase().includes(searchQuery.toLowerCase()))
                     filteredMessages.push(childSnapshot);
             });
-    
+
             searchResultsContainer.innerHTML = '';
-    
+
             filteredMessages.forEach(function (childSnapshot) {
                 const childData = childSnapshot.val();
                 const messageDiv = document.createElement('div');
@@ -154,7 +154,7 @@ onValue(ref(db, '/'), (snapshot) => {
                 messageDiv.classList.add("messageCard");
                 searchResultsContainer.appendChild(messageDiv);
             });
-    
+
             searchResultCount.innerText = `${filteredMessages.length} matching results`;
             searchInput.value = '';
             searchErrorText.innerText = '';
