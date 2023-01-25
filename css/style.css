@@ -166,3 +166,9 @@ form {
 
 
 }
+
+@media screen and (min-width: 700px) {
+    main {
+        width: 50%;
+    }
+}
