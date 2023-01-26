@@ -1,3 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+
+body {
+    background-color: #F5F6FA;
+}
+
+
+
+
+
+/* //NAVBARR______________ */
+.toggle-icon {
+    display: none;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 1rem 3rem;
+    background: #fff;
+}
+
+.navbar-link {
+    width: 105px;
+}
+
+
+.navbar-items {
+    width: 100%;
+    display: flex;
+}
+
+.navbar .link-list {
+    display: flex;
+    gap: 3rem;
+    text-transform: uppercase;
+    margin: auto !important;
+}
+
+.link-list .link-item.active a {
+    color: #007AFF;
+}
+
+.link-list .link-item a:hover {
+    color: #007AFF;
+}
+
+.link-list .link-item a {
+    transition: .3s all;
+    font-weight: 450;
+    font-size: 1.2rem;
+    font-family: poppins;
+    color: #3E3E81;
+}
+
+
+
+
+
+
+/* ____________ */
+
 :root {
     --bgColor: #31d9f6;
     --txtColor: hsl(195, 9%, 9%);
@@ -182,4 +245,62 @@ form {
     main {
         width: 50%;
     }
+
+    footer{
+        flex-direction: column;
+        padding: 2rem 0;
+    }
+}
+
+
+/* footer --------------- */
+
+footer {
+    width: 100%;
+    background: linear-gradient(blue, skyblue);
+    padding: 1rem;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    height: 5rem;
+}
+
+footer .social-icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+footer .social-icon li {
+    list-style: none;
+}
+
+footer .social-icon li a {
+    font-size: 2rem;
+    color: #f6f6f6;
+    margin: 0 0.625rem;
+    display: inline-block;
+    transition: 0, 5s;
+}
+
+footer .social-icon li a:hover {
+    transform: translateY(-0.625);
+    color: rgb(192, 12, 12);
+}
+
+.copyright {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+footer p {
+    font-size: .7rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    margin: auto;
 }

@@ -7,12 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/anime.min.js" defer></script>
+
+    <link rel="icon" type="image/x-icon" href="./images/favicon/pen-icon.webp">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="js/script.js" type="module" defer></script>
+
+
+
+
     <title>Document</title>
     <link rel="icon" type="image/png" href="images/favicon-32x32.png">
 </head>
 
 <body>
+    <!-- HEADER NAVBAR -->
+    <nav class="navbar">
+        <a class="navbar-link" href="index.html"><img src="/Nav/Navbar/logo.svg" /></a>
+        <div class="navbar-items">
+           
+
+            <div class="profilbild">
+                <img src="./images/profile/001.png" alt="">
+            </div>
+        </div>
+
+    </nav>
+
+
+    <!-- navbar -------- -->
     <main>
         <div class="search-box">
             <input type="text" id="search-input">
@@ -39,8 +62,46 @@
         <div class="progress" id="progress-bar">
             <div class="color"></div>
         </div>
-          
+
         <div id="messages"></div>
+
+
+        <!-- FOOTER --------->
+        <footer>
+            <ul class="social-icon">
+                <li>
+                    <a href="">
+                        <ion-icon name="call-outline"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:....@hotmail.com">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://instagram.com">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="https://www.google.com/maps/place/Ledebursgatan+5,+211+55+Malmö/@55.5988015,13.0106389,17z/data=!3m1!4b1!4m5!3m4!1s0x4653a159275308af:0xcf60c88a3243e1e2!8m2!3d55.5988015!4d13.0106389">
+                        <ion-icon name="location-outline"></ion-icon>
+                    </a>
+                </li>
+            </ul>
+            <div class="copyright">
+                <p>© 2023 YC. All rights reserved</p>
+            </div>
+        </footer>
+        </div>
+        </div>
     </main>
     <img src="images/garfAppear.png" alt="hot garf" id="garf">
 </body>
