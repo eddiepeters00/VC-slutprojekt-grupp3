@@ -101,6 +101,11 @@ form {
     justify-content: space-between;
 }
 
+.spinMessage {
+    transform: rotate(360deg);
+    transition: 300ms ease all;
+}
+
 #messages {
     width: 100%;
 }
