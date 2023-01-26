@@ -44,29 +44,52 @@ pickedColors.forEach(color => {
     });
 });
 
+let garfAnimation = anime({
+    targets: '#garf',
+    delay: 200,
+    keyframes: [
+      {translateY: '24'},
+      {translateX: '-45'},
+      {rotate: '75'},
+      {translateY: '1000'},
+      {opacity: 0},
+    ],
+    autoplay: false,
+    })
+    
+function garfAppear() {
+    if (document.getElementById('message-input').value.indexOf("garfield") > -1) {
+          console.log('garfield') 
+          let garfield = document.getElementById('garf')
+          garfield.style.display= "block"
+          garfAnimation.play();     
+        }else{
+          document.getElementById('garf').style.display = "none"
+        }
+}
 
 function createMessage(event) {
     event.preventDefault();
     getTimestamp();
-
     const username = usernameInput.value;
     const userMessage = messageBox.value;
     audio.play();
-
+    
     //if-sats för att user måste ange ett username och ett message
     if (username == "" && userMessage == "") {
         alert("Username required & message-box cannot be empty")
     }
-
+    
     else if (username == "") {
         alert("Username required")
     }
-
+    
     else if (userMessage == "") {
         alert("Message-box cannot be empty")
     }
-
+    
     else {
+        garfAppear();
         //Pushar message till databasen
         push(ref(db, "/"), {
 
