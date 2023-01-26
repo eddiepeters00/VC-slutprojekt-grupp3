@@ -108,6 +108,16 @@ onValue(ref(db, '/'), (snapshot) => {
 
         progressBar.style.display = 'none';
     });
+    const messageCards = document.querySelectorAll('.messageCard');
+
+console.log(messageCards);
+
+for (let i = 0; i < messageCards.length; i++) {
+    messageCards[i].addEventListener('click', function(){
+        console.log('adding');
+        messageCards[i].classList.add('spinMessage');
+    })
+}
 });
 
 function getTimestamp() {
@@ -158,6 +168,8 @@ onValue(ref(db, '/'), (snapshot) => {
             searchResultCount.innerText = `${filteredMessages.length} matching results`;
             searchInput.value = '';
             searchErrorText.innerText = '';
+            
         }
     }
 });
+
