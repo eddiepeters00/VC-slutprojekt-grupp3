@@ -127,6 +127,13 @@ form {
     animation: progres 1s linear;
 }
 
+#garf {
+    display: none;
+    height: 150px;
+    position: absolute;
+    top: 40px; left: 40px;
+  }
+
 @keyframes progres {
     0% {
         width: 0%;
