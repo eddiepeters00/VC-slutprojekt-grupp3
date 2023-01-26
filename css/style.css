@@ -129,7 +129,7 @@ form {
     width: 0px;
     height: 10px;
     border-radius: 15px;
-    animation: progres 1s linear;
+    animation: progres 2s linear;
 }
 
 @keyframes progres {
