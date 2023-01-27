@@ -119,7 +119,7 @@ h1 {
 body {
     background-color: var(--bgColor);
     color: var(--txtColor);
-    font-family: sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 
@@ -137,6 +137,15 @@ main {
     width: 85%;
 }
 
+.search-box{
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+#search-input{
+    margin-top: 0.5rem;
+}
+
 textarea {
     width: 100%;
     height: 4rem;
@@ -149,6 +158,10 @@ textarea {
 form {
     width: 100%;
     margin-top: 1rem;
+}
+
+.name{
+    font-weight: bold;
 }
 
 #message-input-header {
@@ -170,6 +183,11 @@ form {
     width: 1rem;
     height: 1rem;
     border: 1px solid black;
+}
+
+#color-text{
+    font-size: 0.8rem;
+    margin-top: 2px;
 }
 
 #color-picker div:nth-child(1) {
