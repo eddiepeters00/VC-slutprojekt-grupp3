@@ -44,28 +44,29 @@ pickedColors.forEach(color => {
     });
 });
 
+
 let garfAnimation = anime({
     targets: '#garf',
     delay: 200,
     keyframes: [
-      {translateY: '24'},
-      {translateX: '-45'},
-      {rotate: '75'},
-      {translateY: '1000'},
-      {opacity: 0},
+        { translateY: '24' },
+        { translateX: '-45' },
+        { rotate: '75' },
+        { translateY: '1000' },
+        { opacity: 0 },
     ],
     autoplay: false,
-    })
-    
+})
+
 function garfAppear() {
     if (document.getElementById('message-input').value.indexOf("garfield") > -1) {
-          console.log('garfield') 
-          let garfield = document.getElementById('garf')
-          garfield.style.display= "block"
-          garfAnimation.play();     
-        }else{
-          document.getElementById('garf').style.display = "none"
-        }
+        console.log('garfield')
+        let garfield = document.getElementById('garf')
+        garfield.style.display = "block"
+        garfAnimation.play();
+    } else {
+        document.getElementById('garf').style.display = "none"
+    }
 }
 
 function createMessage(event) {
@@ -74,20 +75,20 @@ function createMessage(event) {
     const username = usernameInput.value;
     const userMessage = messageBox.value;
     audio.play();
-    
+
     //if-sats för att user måste ange ett username och ett message
     if (username == "" && userMessage == "") {
         alert("Username required & message-box cannot be empty")
     }
-    
+
     else if (username == "") {
         alert("Username required")
     }
-    
+
     else if (userMessage == "") {
         alert("Message-box cannot be empty")
     }
-    
+
     else {
         garfAppear();
         //Pushar message till databasen
@@ -133,14 +134,25 @@ onValue(ref(db, '/'), (snapshot) => {
     });
     const messageCards = document.querySelectorAll('.messageCard');
 
-console.log(messageCards);
+    console.log(messageCards);
 
-for (let i = 0; i < messageCards.length; i++) {
-    messageCards[i].addEventListener('click', function(){
-        console.log('adding');
-        messageCards[i].classList.add('spinMessage');
-    })
-}
+    for (let i = 0; i < messageCards.length; i++) {
+        //Change colors on all messages in darkmode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            console.log(messageCards[i].style.backgroundColor);
+            let cardBackgroundColor = messageCards[i].style.backgroundColor;
+            const colorArray = cardBackgroundColor.split(',');
+            console.log(colorArray);
+            console.log(colorArray[3]);
+            console.log(`${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]}, 0.3)`);
+            cardBackgroundColor = messageCards[i].style.backgroundColor = `${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]}, 0.3)`;
+        }
+
+        messageCards[i].addEventListener('click', function () {
+            console.log('adding');
+            messageCards[i].classList.add('spinMessage');
+        })
+    }
 });
 
 function getTimestamp() {
@@ -191,7 +203,7 @@ onValue(ref(db, '/'), (snapshot) => {
             searchResultCount.innerText = `${filteredMessages.length} matching results`;
             searchInput.value = '';
             searchErrorText.innerText = '';
-            
+
         }
     }
 });

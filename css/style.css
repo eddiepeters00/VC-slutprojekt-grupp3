@@ -5,10 +5,10 @@
 
     /* Card colors */
 
-    --cardColor1: #36f080;
-    --cardColor2: #ef5cf7;
-    --cardColor3: #ebba50;
-    --cardColor4: #ea545e;
+    --cardColor1: rgba(54, 240, 128, 0.99);
+    --cardColor2: rgba(239, 92, 247, 0.99);
+    --cardColor3: rgba(235, 186, 80, 0.99);
+    --cardColor4: rgba(234, 84, 94, 0.99);
 }
 
 body {
@@ -168,11 +168,6 @@ form {
         --bgColor: hsl(216, 33%, 16%);
         --txtColor: hsl(196, 27%, 92%);
 
-        /* Card colors */
-        --cardColor1: #36f08034;
-        --cardColor2: #ef5cf721;
-        --cardColor3: #ebba5041;
-        --cardColor4: #ea545e31;
     }
 
 
