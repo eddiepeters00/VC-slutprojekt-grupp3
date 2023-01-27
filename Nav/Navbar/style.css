@@ -60,40 +60,6 @@ body {
 
 
 
-.contact-us {
-    background-color: #007AFF;
-    display: flex;
-    align-items: center;
-    border-radius: 12px;
-    padding: .4rem 1.4rem;
-    cursor: pointer;
-    transition: .3s all;
-    border: 1px solid #007AFF;
-    margin-right: 2rem;
-}
-
-.contact-us a {
-    color: black;
-    font-weight: 400;
-    font-size: 1.2rem;
-}
-
-.contact-us:hover {
-    background: none;
-    border: 1px solid #007AFF;
-}
-
-.contact-us:hover a {
-    color: #007AFF !important;
-}
-
-.profilbild img {
-    border-radius: 5rem;
-    width: 40px;
-    margin-top: 8px;
-    cursor: pointer;
-}
-
 
 @media screen and (max-width: 768px) {
     .close-icon.show {

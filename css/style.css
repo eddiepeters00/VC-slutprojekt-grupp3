@@ -54,6 +54,48 @@ body {
     color: #3E3E81;
 }
 
+/* ABOUT */
+
+.wrapper {
+    height: 45vh;
+    width: 100%;
+    background-image: url(../../images/backgrounds/bg2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    justify-content: center;
+}
+
+.about-del-top {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    margin: 2rem 0;
+}
+
+.about-del {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    margin: 1.875rem;
+    gap: 1rem;
+}
+
+.about-del-top img {
+    width: 30rem;
+    border-radius: 10px;
+
+}
+
+h1 {
+    color: #3E3E81;
+    font-size: 1.8rem;
+    padding-right: 2rem;
+    margin-top: 4rem;
+    text-align: center;
+
+}
 
 
 
@@ -246,11 +288,26 @@ form {
         width: 50%;
     }
 
-    footer{
+
+    /* NAvbar and about  */
+
+    .about-del-top img {
+        width: 70%;
+    }
+
+    .about-del {
         flex-direction: column;
-        padding: 2rem 0;
+    }
+
+    footer {
+        flex-direction: column;
+        padding: 4rem 0;
     }
 }
+
+
+
+
 
 
 /* footer --------------- */
