@@ -3,7 +3,7 @@
 
 ## Features 
 
-Användaren kan skriva in sitt username, välja en färg på sitt meddelande och skicka iväg det. I meddelandet syns även datum och tidpunkt. 
+Användaren kan skriva in sitt username, välja en färg på sitt meddelande och skicka iväg det. I meddelandet syns även datum och tidpunkt. Man måste skriva in ett username, och skriva något i meddelande-rutan samt välja en färg - annars postas inte meddelandet. På desktop kommer det upp en alert som meddelar detta. Vi har ett "love letter" som favicon, och sidan är responsive. Vi har även anpassat sidan för webbläsare som är inställda på darkmode. 
 
 ## Mockups 
 
