@@ -43,7 +43,13 @@ pickedColors.forEach(color => {
         messageBox.style.backgroundColor = cardColor;
 
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            messageBox.style.opacity = 0.3;
+            console.log(messageBox.style.backgroundColor);
+            let cardBackgroundColor = messageBox.style.backgroundColor;
+            const colorArray = cardBackgroundColor.split(',');
+            console.log(colorArray);
+            console.log(colorArray[3]);
+            console.log(`${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]}, 0.3)`);
+            cardBackgroundColor = messageBox.style.backgroundColor = `${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]}, 0.3)`;
         }
     });
 });
