@@ -157,6 +157,7 @@ onValue(ref(db, '/'), (snapshot) => {
         messageCards[i].addEventListener('click', function () {
             console.log('adding');
             messageCards[i].classList.add('spinMessage');
+            setTimeout(()=> {  messageCards[i].classList.remove('spinMessage')}   ,300);
         })
     }
 });

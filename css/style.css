@@ -131,11 +131,13 @@ form {
 }
 
 .spinMessage {
+    filter: brightness(2);
     transform: rotate(360deg);
     transition: 300ms ease all;
 }
 
 #messages {
+    
     width: 100%;
 }
 
