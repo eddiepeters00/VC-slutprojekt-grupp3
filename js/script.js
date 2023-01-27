@@ -41,6 +41,10 @@ pickedColors.forEach(color => {
     color.addEventListener('click', function () {
         cardColor = getComputedStyle(this).backgroundColor;
         messageBox.style.backgroundColor = cardColor;
+
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            messageBox.style.opacity = 0.3;
+        }
     });
 });
 
