@@ -9,100 +9,6 @@ body {
 
 
 
-/* //NAVBARR______________ */
-.toggle-icon {
-    display: none;
-}
-
-.navbar {
-    display: flex;
-    align-items: center;
-    padding: 1rem 3rem;
-    background: #fff;
-}
-
-.navbar-link {
-    width: 105px;
-}
-
-
-.navbar-items {
-    width: 100%;
-    display: flex;
-}
-
-.navbar .link-list {
-    display: flex;
-    gap: 3rem;
-    text-transform: uppercase;
-    margin: auto !important;
-}
-
-.link-list .link-item.active a {
-    color: #007AFF;
-}
-
-.link-list .link-item a:hover {
-    color: #007AFF;
-}
-
-.link-list .link-item a {
-    transition: .3s all;
-    font-weight: 450;
-    font-size: 1.2rem;
-    font-family: poppins;
-    color: #3E3E81;
-}
-
-/* ABOUT */
-
-.wrapper {
-    height: 45vh;
-    width: 100%;
-    background-image: url(../../images/backgrounds/bg2.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    justify-content: center;
-}
-
-.about-del-top {
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    margin: 2rem 0;
-}
-
-.about-del {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    margin: 1.875rem;
-    gap: 1rem;
-}
-
-.about-del-top img {
-    width: 30rem;
-    border-radius: 10px;
-
-}
-
-h1 {
-    color: #3E3E81;
-    font-size: 1.8rem;
-    padding-right: 2rem;
-    margin-top: 4rem;
-    text-align: center;
-
-}
-
-
-
-
-
-/* ____________ */
-
 :root {
     --bgColor: #31d9f6;
     --txtColor: hsl(195, 9%, 9%);
@@ -284,6 +190,7 @@ form {
     top: 40px; left: 40px;
   }
 
+  
 /* -------------------- DARK MODE -------------------- */
 
 @media (prefers-color-scheme: dark) {
@@ -299,16 +206,5 @@ form {
 @media screen and (min-width: 700px) {
     main {
         width: 50%;
-    }
-
-
-    /* NAvbar and about  */
-
-    .about-del-top img {
-        width: 70%;
-    }
-
-    .about-del {
-        flex-direction: column;
     }
 }
