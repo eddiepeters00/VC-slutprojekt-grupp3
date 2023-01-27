@@ -68,6 +68,7 @@ let garfAnimation = anime({
     autoplay: false,
 })
 
+
 function garfAppear() {
     if (document.getElementById('message-input').value.indexOf("garfield") > -1) {
         console.log('garfield')
@@ -211,6 +212,15 @@ onValue(ref(db, '/'), (snapshot) => {
                 messageDiv.style.backgroundColor = childData.color;
                 messageDiv.classList.add("messageCard");
                 searchResultsContainer.appendChild(messageDiv);
+                
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    let cardBackgroundColor = messageDiv.style.backgroundColor;
+                    const colorArray = cardBackgroundColor.split(',');
+                    cardBackgroundColor = messageDiv.style.backgroundColor = `${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]}, 0.3)`;
+                }
+                else{
+                    messageDiv.style.backgroundColor = childData.color;
+                }
             });
 
             searchResultCount.innerText = `${filteredMessages.length} matching results`;
