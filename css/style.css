@@ -190,17 +190,19 @@ form {
     top: 40px; left: 40px;
   }
 
-  
+
 /* -------------------- DARK MODE -------------------- */
 
 @media (prefers-color-scheme: dark) {
     :root {
         --bgColor: hsl(216, 33%, 16%);
         --txtColor: hsl(196, 27%, 92%);
-
     }
 
-
+    input, textarea{
+        background-color: var(--bgColor);
+        color: var(--txtColor);
+    }
 }
 
 @media screen and (min-width: 700px) {
