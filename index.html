@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/anime.min.js" defer></script>
     <script src="js/script.js" type="module" defer></script>
@@ -15,6 +18,7 @@
 <body>
     <main>
         <div class="search-box">
+            <p>Search for a message:</p>
             <input type="text" id="search-input">
             <button id="search-btn">Search</button>
             <label id="search-result-count"></label>
@@ -24,8 +28,9 @@
 
         <form>
             <div id="message-input-header">
-                <input id="username" placeholder="username"></input>
+                <input id="username" placeholder="Your username"></input>
                 <div id="color-picker">
+                    <p id="color-text">Choose a color for your message:</p>
                     <div class="picked-color"></div>
                     <div class="picked-color"></div>
                     <div class="picked-color"></div>

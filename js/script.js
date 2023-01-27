@@ -87,6 +87,10 @@ function createMessage(event) {
     else if (userMessage == "") {
         alert("Message-box cannot be empty")
     }
+
+    else if (cardColor == undefined){
+        alert("Choose a color!")
+    }
     
     else {
         garfAppear();
@@ -126,9 +130,7 @@ onValue(ref(db, '/'), (snapshot) => {
         timestampText.innerText = childData.time;
         messageP.innerText = childData.message;
         messageForBoard.classList.add("messageCard");
-
         messageP.innerText = childData.name + ": " + childData.message;
-
         progressBar.style.display = 'none';
     });
     const messageCards = document.querySelectorAll('.messageCard');
